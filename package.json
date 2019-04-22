@@ -1,0 +1,25 @@
+{
+  "name": "express-sample",
+  "version": "1.0.0",
+  "description": "express + node.js + apollo + react sample",
+  "main": "index.js",
+  "repository": "https://github.com/coffeemk2/express-sample",
+  "author": "Kazuma Maekawa",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.16.0",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "scripts": {
+    "start": "node ./src/index.js"
+  }
+}
