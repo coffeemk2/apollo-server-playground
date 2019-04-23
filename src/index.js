@@ -1,14 +1,26 @@
-import express from "express";
 import clearConsole from "../utils/clearConsole";
-const app = express();
+import { ApolloServer, gql } from "apollo-server";
 
-app.get("/", (req, res) => res.send("Hello World"));
-app.get("/app", (req, res) => {
-  console.log("hit /app");
-  res.send("Hello World2");
-});
+const typeDefs = gql`
+  type Author {
+    fname: String
+  }
+  type Query {
+    hello: String
+    author: Author
+  }
+`;
 
-app.listen(3000, () => {
+const resolvers = {
+  Query: {
+    hello: () => "Hello world!",
+    author: () => ({ fname: "kazuma" })
+  }
+};
+
+const server = new ApolloServer({ typeDefs, resolvers });
+
+server.listen(3000, () => {
   clearConsole();
   console.log("Example app listening on port 3000!");
 });
