@@ -8,8 +8,10 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "@babel/polyfill": "^7.4.3",
     "apollo-server": "^2.4.8",
-    "graphql": "^14.2.1"
+    "graphql": "^14.2.1",
+    "mongoose": "^5.5.3"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
