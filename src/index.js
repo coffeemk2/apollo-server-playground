@@ -19,6 +19,9 @@ const typeDefs = gql`
     author: Author
     getUsers: [User]
   }
+  type Mutation {
+    addUser(userName: String, email: String): User
+  }
 `;
 
 const resolvers = {
@@ -26,6 +29,16 @@ const resolvers = {
     hello: () => "Hello world!",
     author: () => ({ fname: "kazuma" }),
     getUsers: async () => await User.find({}).exec()
+  },
+  Mutation: {
+    addUser: async (_, args) => {
+      try {
+        const response = await User.create(args);
+        return response;
+      } catch (e) {
+        return e.message;
+      }
+    }
   }
 };
 
