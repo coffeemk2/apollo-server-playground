@@ -2,7 +2,7 @@ import { gql } from "apollo-server";
 
 const userType = gql`
   type User {
-    _id: String!
+    _id: ID!
     displayName: String
     displayID: String
     profileImage: String

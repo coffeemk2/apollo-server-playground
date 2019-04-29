@@ -8,7 +8,7 @@ import typeDefs from "./type-defs";
 
 connectDB();
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, mocks: true });
 
 server.listen(4000, () => {
   clearConsole();

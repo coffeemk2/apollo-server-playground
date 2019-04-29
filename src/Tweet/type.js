@@ -2,8 +2,8 @@ import { gql } from "apollo-server";
 
 const tweetType = gql`
   type Tweet {
-    _id: String!
-    userId: String
+    _id: ID!
+    userId: ID!
     content: String
   }
   type Query {
