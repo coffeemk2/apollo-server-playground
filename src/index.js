@@ -1,50 +1,44 @@
 import clearConsole from "../utils/clearConsole";
 import { ApolloServer, gql } from "apollo-server";
 import "@babel/polyfill";
-import db from "./config";
-import User from "./user.model";
+import connectDB from "./connectToDB";
+import { users, addUser } from "./controllers/user.controller";
 
-db();
+connectDB();
 
 const typeDefs = gql`
   type User {
-    userName: String
-    email: String
+    _id: String!
+    displayName: String
+    displayID: String
+    profileImage: String
   }
-  type Author {
-    fname: String
+  type Tweet {
+    _id: String!
+    userId: String!
+    content: String
   }
   type Query {
-    hello: String
-    author: Author
-    getUsers: [User]
+    users: [User]
+    tweets: [Tweet]
   }
   type Mutation {
-    addUser(userName: String, email: String): User
+    addUser(displayName: String): User
   }
 `;
 
 const resolvers = {
   Query: {
-    hello: () => "Hello world!",
-    author: () => ({ fname: "kazuma" }),
-    getUsers: async () => await User.find({}).exec()
+    users: users
   },
   Mutation: {
-    addUser: async (_, args) => {
-      try {
-        const response = await User.create(args);
-        return response;
-      } catch (e) {
-        return e.message;
-      }
-    }
+    addUser: addUser
   }
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen(3000, () => {
+server.listen(4000, () => {
   clearConsole();
-  console.log("Example app listening on port 3000!");
+  console.log("Example app listening on port 4000!");
 });

@@ -1,8 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 
 const userSchema = new Schema({
-  userName: String,
-  email: String
+  displayName: String,
+  displayID: String,
+  profileImage: String
 });
 
 const User = mongoose.model("user", userSchema);
