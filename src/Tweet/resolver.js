@@ -1,4 +1,4 @@
-import Tweet from "../models/tweet.model";
+import Tweet from "./model";
 
 const tweets = async () => await Tweet.find({}).exec();
 const addTweet = async (_, args) => {
@@ -10,4 +10,4 @@ const addTweet = async (_, args) => {
   }
 };
 
-export { tweets, addTweet };
+export default { Query: { tweets }, Mutation: { addTweet } };

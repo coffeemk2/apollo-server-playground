@@ -1,4 +1,4 @@
-import User from "../models/user.model";
+import User from "./model";
 
 const users = async () => await User.find({}).exec();
 const addUser = async (_, args) => {
@@ -10,4 +10,4 @@ const addUser = async (_, args) => {
   }
 };
 
-export { users, addUser };
+export default { Query: { users }, Mutation: { addUser } };
